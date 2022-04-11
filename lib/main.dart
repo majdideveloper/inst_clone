@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:instg_app/responsive/mobile_screen_layout.dart';
 import 'package:instg_app/responsive/responsive_layout_screen.dart';
 import 'package:instg_app/responsive/web_screen_layout.dart';
-import 'package:instg_app/screen/auth/login_screen.dart';
+import 'package:instg_app/screen/auth/screen/login_screen.dart';
 import 'package:instg_app/utils/colors.dart';
+
+import 'screen/auth/screen/sign_up_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -40,7 +42,7 @@ class MyApp extends StatelessWidget {
       //   mobileScreenLayout: MobileScreenLayout(),
       //   webScreenLayout: WebScreenLayout(),
       // ));
-      home: const LoginScreen(),
+      home: const SignUpScreen(),
     );
   }
 }

@@ -2,17 +2,20 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class BottomTextWidget extends StatelessWidget {
-  const BottomTextWidget({Key? key}) : super(key: key);
+  final String? msg, textDirection;
+  const BottomTextWidget(
+      {Key? key, required this.msg, required this.textDirection})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return RichText(
       text: TextSpan(
-        text: 'Don\'t have an account! ',
+        text: msg,
         style: const TextStyle(),
         children: <TextSpan>[
           TextSpan(
-            text: ' Sign up',
+            text: textDirection,
             recognizer: TapGestureRecognizer()..onTap = (() {}),
             style: const TextStyle(
               decoration: TextDecoration.underline,
