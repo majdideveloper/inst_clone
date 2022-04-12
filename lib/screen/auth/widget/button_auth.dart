@@ -7,7 +7,10 @@ class ButtonAuth extends StatelessWidget {
   final bool? isLoading;
   final String? text;
   const ButtonAuth(
-      {Key? key, required this.text, required this.onTap, this.isLoading})
+      {Key? key,
+      required this.text,
+      required this.onTap,
+      this.isLoading = false})
       : super(key: key);
 
   @override

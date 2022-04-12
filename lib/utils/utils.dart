@@ -19,3 +19,9 @@ showSnakBar(BuildContext context, String content) {
     ),
   );
 }
+
+navigatorToAtherScreen(BuildContext context, Widget atherPage) {
+  Navigator.of(context).push(MaterialPageRoute(
+    builder: (context) => atherPage,
+  ));
+}
