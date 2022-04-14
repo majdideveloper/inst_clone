@@ -30,7 +30,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     _emailController.dispose();
     _passWordController.dispose();
@@ -39,7 +38,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     _isLoading = ValueNotifier<bool>(false);
     super.initState();
   }
@@ -139,7 +137,6 @@ class _LoginScreenState extends State<LoginScreen> {
       showSnakBar(context, res);
       _isLoading.value = false;
     } else {
-      showSnakBar(context, res);
       _isLoading.value = false;
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(

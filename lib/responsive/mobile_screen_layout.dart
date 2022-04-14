@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:instg_app/models/user.dart';
 import 'package:instg_app/providers/user_provider.dart';
 import 'package:instg_app/utils/colors.dart';
+import 'package:instg_app/utils/utils.dart';
 import 'package:provider/provider.dart';
 
 class MobileScreenLayout extends StatefulWidget {
@@ -14,18 +15,16 @@ class MobileScreenLayout extends StatefulWidget {
 
 class _MobileScreenLayoutState extends State<MobileScreenLayout> {
   late PageController pageController;
-  int _page = 0;
+  int _page = 2;
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     pageController = PageController();
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     pageController.dispose();
   }
@@ -38,23 +37,7 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
         physics: const NeverScrollableScrollPhysics(),
         controller: pageController,
         onPageChanged: onPageChanged,
-        children: [
-          Center(
-            child: Text('home'),
-          ),
-          Center(
-            child: Text('home'),
-          ),
-          Center(
-            child: Text('home'),
-          ),
-          Center(
-            child: Text('home'),
-          ),
-          Center(
-            child: Text('home'),
-          ),
-        ],
+        children: screenWidget,
       ),
       bottomNavigationBar: CupertinoTabBar(
         onTap: navigationTapped,

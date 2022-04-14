@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:instg_app/screen/add_post/add_post_screen.dart';
 
 pickeImage(ImageSource source) async {
   final ImagePicker _imagePicker = ImagePicker();
@@ -25,3 +26,19 @@ navigatorToAtherScreen(BuildContext context, Widget atherPage) {
     builder: (context) => atherPage,
   ));
 }
+
+List<Widget> screenWidget = [
+  Center(
+    child: Text('home'),
+  ),
+  Center(
+    child: Text('home'),
+  ),
+  AddPostScreen(),
+  Center(
+    child: Text('home'),
+  ),
+  Center(
+    child: Text('home'),
+  ),
+];
