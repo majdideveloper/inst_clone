@@ -3,61 +3,67 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:instg_app/screen/add_post/add_post_screen.dart';
 import 'package:instg_app/utils/utils.dart';
 
-class AppProvider {
-  late ValueNotifier<Uint8List?> _file;
+class AppProvider with ChangeNotifier {
+  Uint8List? finalfile;
 
-  void initState() {
-    _file = ValueNotifier<Uint8List?>(null);
-  }
+  // late ValueNotifier<Uint8List?> _file;
 
-  void dispose() {
-    _file.dispose();
-  }
-  //getter
+  // void initState() {
+  //   _file = ValueNotifier<Uint8List?>(null);
+  // }
 
-  ValueNotifier<Uint8List?> get getFile {
-    _file = ValueNotifier<Uint8List?>(null);
-    return _file;
-  }
+  // void dispose() {
+  //   _file.dispose();
+  // }
+  // //getter
 
-  set settFile(Uint8List? file) {
-    _file.value = file;
-  }
+  // ValueNotifier<Uint8List?> get getFile {
+  //   _file = ValueNotifier<Uint8List?>(null);
+  //   return _file;
+  // }
+
+  // set settFile(Uint8List? file) {
+  //   _file.value = file;
+  // }
 
   selectImage(BuildContext context) async {
     return showDialog(
         context: context,
         builder: (_) {
-          return ValueListenableBuilder(
-              valueListenable: _file,
-              builder: (context, file, child) {
-                return SimpleDialog(
-                  title: const Text('Create a Post'),
-                  children: [
-                    SimpleDialogOption(
-                      padding: const EdgeInsets.all(20),
-                      child: const Text('Take  Photo'),
-                      onPressed: () async {
-                        Navigator.of(context).pop;
-                        Uint8List file = await pickeImage(ImageSource.camera);
-                        _file.value = file;
-                      },
-                    ),
-                    SimpleDialogOption(
-                      padding: const EdgeInsets.all(20),
-                      child: const Text('choose from  Gallery'),
-                      onPressed: () async {
-                        Navigator.of(context).pop;
-                        Uint8List? file = await pickeImage(ImageSource.gallery);
+          // return ValueListenableBuilder(
+          //     valueListenable: file,
+          //     builder: (context, file, child) {
+          return SimpleDialog(
+            title: const Text('Create a Post'),
+            children: [
+              SimpleDialogOption(
+                padding: const EdgeInsets.all(20),
+                child: const Text('Take  Photo'),
+                onPressed: () async {
+                  Navigator.pop(context);
+                  Uint8List file = await pickeImage(ImageSource.camera);
+                  finalfile = file;
 
-                        _file.value = file;
-                      },
-                    )
-                  ],
-                );
-              });
+                  notifyListeners();
+                },
+              ),
+              SimpleDialogOption(
+                padding: const EdgeInsets.all(20),
+                child: const Text('choose from  Gallery'),
+                onPressed: () async {
+                  Navigator.pop(context);
+                  Uint8List? file = await pickeImage(ImageSource.gallery);
+
+                  finalfile = file;
+                  await navigatorToAtherScreen(context, AddPostScreen());
+                  notifyListeners();
+                },
+              )
+            ],
+          );
         });
   }
 }

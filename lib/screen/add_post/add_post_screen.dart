@@ -10,12 +10,13 @@ class AddPostScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return context.read<AppProvider>().getFile != null
+    return context.watch<AppProvider>().finalfile == null
         ? Center(
             child: IconButton(
-                onPressed: () => context.read<AppProvider>().selectImage(
-                      context,
-                    ),
+                onPressed: () async =>
+                    await context.read<AppProvider>().selectImage(
+                          context,
+                        ),
                 icon: const Icon(Icons.upload_file)),
           )
         : Scaffold(
@@ -49,13 +50,13 @@ class AddPostScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      CircleAvatar(
+                      const CircleAvatar(
                         backgroundImage: NetworkImage(
                             'https://images.pexels.com/photos/2623968/pexels-photo-2623968.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'),
                       ),
                       SizedBox(
                         width: MediaQuery.of(context).size.width * 0.3,
-                        child: TextField(
+                        child: const TextField(
                           maxLines: 8,
                           decoration: InputDecoration(
                             hintText: 'Write a caption...',

@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => UserProvider(),
         ),
-        Provider(
+        ListenableProvider(
           create: (_) => AppProvider(),
           lazy: true,
         ),
